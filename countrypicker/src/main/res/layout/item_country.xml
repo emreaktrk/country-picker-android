@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:selectableItemBackground"
+    android:background="?selectableItemBackground"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    >
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal">
 
-  <ImageView
+  <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/country_flag"
       android:layout_width="48dp"
       android:layout_height="48dp"
       android:layout_marginLeft="16dp"
       android:layout_marginStart="16dp"
       android:padding="10dp"
-      />
+      tools:src="@sample/flags" />
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
+      android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
       android:id="@+id/country_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center_vertical"
       android:padding="16dp"
       android:textColor="@android:color/black"
-      />
+      tools:text="@tools:sample/cities" />
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

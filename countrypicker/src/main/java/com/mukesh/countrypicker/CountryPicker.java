@@ -9,12 +9,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.StyleRes;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,12 +16,22 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.StyleRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textfield.TextInputEditText;
 import com.mukesh.countrypicker.listeners.BottomSheetInteractionListener;
 import com.mukesh.countrypicker.listeners.OnCountryPickerListener;
 import com.mukesh.countrypicker.listeners.OnItemClickListener;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -128,8 +132,7 @@ public class CountryPicker implements BottomSheetInteractionListener {
       new Country("GP", "Guadeloupe", "+590", R.drawable.flag_gp, "EUR"),
       new Country("GQ", "Equatorial Guinea", "+240", R.drawable.flag_gq, "XAF"),
       new Country("GR", "Greece", "+30", R.drawable.flag_gr, "EUR"),
-      new Country("GS", "South Georgia and the South Sandwich Islands", "+500", R.drawable.flag_gs,
-          "GBP"),
+          new Country("GS", "South Georgia and the South Sandwich Islands", "+500", R.drawable.flag_gs, "GBP"),
       new Country("GT", "Guatemala", "+502", R.drawable.flag_gt, "GTQ"),
       new Country("GU", "Guam", "+1", R.drawable.flag_gu, "USD"),
       new Country("GW", "Guinea-Bissau", "+245", R.drawable.flag_gw, "XOF"),
@@ -183,8 +186,7 @@ public class CountryPicker implements BottomSheetInteractionListener {
       new Country("MF", "Saint Martin", "+590", R.drawable.flag_mf, "EUR"),
       new Country("MG", "Madagascar", "+261", R.drawable.flag_mg, "MGA"),
       new Country("MH", "Marshall Islands", "+692", R.drawable.flag_mh, "USD"),
-      new Country("MK", "Macedonia, The Former Yugoslav Republic of", "+389", R.drawable.flag_mk,
-          "MKD"),
+          new Country("MK", "Macedonia, The Former Yugoslav Republic of", "+389", R.drawable.flag_mk, "MKD"),
       new Country("ML", "Mali", "+223", R.drawable.flag_ml, "XOF"),
       new Country("MM", "Myanmar", "+95", R.drawable.flag_mm, "MMK"),
       new Country("MN", "Mongolia", "+976", R.drawable.flag_mn, "MNT"),
@@ -239,8 +241,7 @@ public class CountryPicker implements BottomSheetInteractionListener {
       new Country("SD", "Sudan", "+249", R.drawable.flag_sd, "SDG"),
       new Country("SE", "Sweden", "+46", R.drawable.flag_se, "SEK"),
       new Country("SG", "Singapore", "+65", R.drawable.flag_sg, "SGD"),
-      new Country("SH", "Saint Helena, Ascension and Tristan Da Cunha", "+290", R.drawable.flag_sh,
-          "SHP"),
+          new Country("SH", "Saint Helena, Ascension and Tristan Da Cunha", "+290", R.drawable.flag_sh, "SHP"),
       new Country("SI", "Slovenia", "+386", R.drawable.flag_si, "EUR"),
       new Country("SJ", "Svalbard and Jan Mayen", "+47", R.drawable.flag_sj, "NOK"),
       new Country("SK", "Slovakia", "+421", R.drawable.flag_sk, "EUR"),
@@ -293,9 +294,7 @@ public class CountryPicker implements BottomSheetInteractionListener {
       new Country("ZM", "Zambia", "+260", R.drawable.flag_zm, "ZMW"),
       new Country("ZW", "Zimbabwe", "+263", R.drawable.flag_zw, "USD"),
   };
-  // endregion
 
-  // region Variables
   public static final int SORT_BY_NONE = 0;
   public static final int SORT_BY_NAME = 1;
   public static final int SORT_BY_ISO = 2;
@@ -311,9 +310,9 @@ public class CountryPicker implements BottomSheetInteractionListener {
   private boolean canSearch = true;
 
   private List<Country> countries;
-  private EditText searchEditText;
+  private TextInputEditText searchEditText;
   private RecyclerView countriesRecyclerView;
-  private LinearLayout rootView;
+  private LinearLayoutCompat rootView;
   private int textColor;
   private int hintColor;
   private int backgroundColor;
@@ -323,13 +322,12 @@ public class CountryPicker implements BottomSheetInteractionListener {
   private List<Country> searchResults;
   private BottomSheetDialogView bottomSheetDialog;
   private Dialog dialog;
-  // endregion
 
-  // region Constructors
   private CountryPicker() {
+    // Empty block
   }
 
-  CountryPicker(Builder builder) {
+  private CountryPicker(Builder builder) {
     sortBy = builder.sortBy;
     if (builder.onCountryPickerListener != null) {
       onCountryPickerListener = builder.onCountryPickerListener;
@@ -341,9 +339,7 @@ public class CountryPicker implements BottomSheetInteractionListener {
     countries = new ArrayList<>(Arrays.asList(COUNTRIES));
     sortCountries(countries);
   }
-  // endregion
 
-  // region Listeners
   private void sortCountries(@NonNull List<Country> countries) {
     if (sortBy == SORT_BY_NAME) {
       Collections.sort(countries, new Comparator<Country>() {
@@ -368,9 +364,7 @@ public class CountryPicker implements BottomSheetInteractionListener {
       });
     }
   }
-  // endregion
 
-  // region Utility Methods
   public void showDialog(@NonNull Activity activity) {
     if (countries == null || countries.isEmpty()) {
       throw new IllegalArgumentException(context.getString(R.string.error_no_countries_found));
@@ -402,7 +396,6 @@ public class CountryPicker implements BottomSheetInteractionListener {
     }
   }
 
-  // region BottomSheet Methods
   public void showBottomSheet(AppCompatActivity activity) {
     if (countries == null || countries.isEmpty()) {
       throw new IllegalArgumentException(context.getString(R.string.error_no_countries_found));
@@ -519,7 +512,6 @@ public class CountryPicker implements BottomSheetInteractionListener {
     countriesRecyclerView = sheetView.findViewById(R.id.countries_recycler_view);
     rootView = sheetView.findViewById(R.id.rootView);
   }
-  // endregion
 
   public void setCountries(@NonNull List<Country> countries) {
     this.countries.clear();
@@ -565,9 +557,7 @@ public class CountryPicker implements BottomSheetInteractionListener {
       return countries.get(i);
     }
   }
-  // endregion
 
-  // region Builder
   public static class Builder {
     private Context context;
     private int sortBy = SORT_BY_NONE;
@@ -610,9 +600,7 @@ public class CountryPicker implements BottomSheetInteractionListener {
       return new CountryPicker(this);
     }
   }
-  // endregion
 
-  // region Comparators
   public static class ISOCodeComparator implements Comparator<Country> {
     @Override
     public int compare(Country country, Country nextCountry) {
@@ -626,5 +614,4 @@ public class CountryPicker implements BottomSheetInteractionListener {
       return country.getName().compareToIgnoreCase(nextCountry.getName());
     }
   }
-  // endregion
 }

@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ResultActivity"
-    >
+    tools:context=".ResultActivity">
+
   <RelativeLayout
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
       android:layout_height="?android:actionBarSize"
-      android:background="@color/colorToolbar"
-      >
+      android:background="@color/colorToolbar">
+
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="48dp"
@@ -20,8 +20,8 @@
         android:layout_centerVertical="true"
         android:backgroundTint="@android:color/transparent"
         android:src="?android:attr/homeAsUpIndicator"
-        android:tint="@android:color/white"
-        />
+        android:tint="@android:color/white" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,137 +29,136 @@
         android:text="@string/country_picker"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
   </RelativeLayout>
+
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@+id/toolbar"
-      android:orientation="vertical"
-      >
+      android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        >
+        android:paddingTop="8dp">
+
       <TextView
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:text="@string/country_name"
-          android:textColor="@android:color/white"
-          />
+          android:textColor="@android:color/white" />
+
       <TextView
           android:id="@+id/selected_country_name_text_view"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:textColor="@android:color/white"
-          tools:text="Selected Country Name"
-          />
+          tools:text="Selected Country Name" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        >
+        android:paddingTop="8dp">
+
       <TextView
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:text="@string/country_iso_code"
-          android:textColor="@android:color/white"
-          />
+          android:textColor="@android:color/white" />
+
       <TextView
           android:id="@+id/selected_country_iso_text_view"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:textColor="@android:color/white"
-          tools:text="Selected Country ISO Code"
-          />
+          tools:text="Selected Country ISO Code" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        >
+        android:paddingTop="8dp">
+
       <TextView
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:text="@string/country_dial_code"
-          android:textColor="@android:color/white"
-          />
+          android:textColor="@android:color/white" />
+
       <TextView
           android:id="@+id/selected_country_dial_code_text_view"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:textColor="@android:color/white"
-          tools:text="Selected Country Dial Code"
-          />
+          tools:text="Selected Country Dial Code" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        >
+        android:paddingTop="8dp">
+
       <TextView
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:text="@string/country_currency"
-          android:textColor="@android:color/white"
-          />
+          android:textColor="@android:color/white" />
+
       <TextView
           android:id="@+id/selected_country_currency"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:textColor="@android:color/white"
-          tools:text="Selected Country Dial Code"
-          />
+          tools:text="Selected Country Dial Code" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        >
+        android:paddingTop="8dp">
+
       <TextView
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:text="@string/country_flag"
-          android:textColor="@android:color/white"
-          />
+          android:textColor="@android:color/white" />
+
       <LinearLayout
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:layout_weight="1"
-          >
+          android:layout_weight="1">
+
         <ImageView
             android:id="@+id/selected_country_flag_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:src="@mipmap/ic_launcher"
-            />
+            tools:src="@mipmap/ic_launcher" />
       </LinearLayout>
     </LinearLayout>
   </LinearLayout>

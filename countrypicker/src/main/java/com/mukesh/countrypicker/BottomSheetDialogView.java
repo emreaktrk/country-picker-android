@@ -1,13 +1,15 @@
 package com.mukesh.countrypicker;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.mukesh.countrypicker.listeners.BottomSheetInteractionListener;
 
 import static com.mukesh.countrypicker.CountryPicker.THEME_NEW;
@@ -39,9 +41,9 @@ public class BottomSheetDialogView extends BottomSheetDialogFragment {
     }
   }
 
-  @Nullable @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
+  @Nullable
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     return inflater.inflate(R.layout.country_picker, container, false);
   }
 

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_dialog_new_background"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
-  <EditText
+  <com.google.android.material.textfield.TextInputEditText
+      android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
       android:id="@+id/country_code_picker_search"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -21,12 +22,12 @@
       android:maxLines="1"
       android:padding="16dp"
       android:textColor="@android:color/black"
-      />
+      tools:text="" />
 
-  <android.support.v7.widget.RecyclerView
+  <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/countries_recycler_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      />
-
-</LinearLayout>
+      tools:itemCount="100"
+      tools:listitem="@layout/item_country" />
+</androidx.appcompat.widget.LinearLayoutCompat>
